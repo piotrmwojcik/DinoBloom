@@ -177,7 +177,7 @@ def main(args):
 
     # If you want to log the results with Weights & Biases (wandb), you can initialize a wandb run:
     wandb.init(
-        entity="histo-collab", project=args.wandb_project, name=model_name + "_" + args.experiment_name, config=args
+        entity="piotrmwojcik", project=args.wandb_project, name=model_name + "_" + args.experiment_name, config=args
     )
 
     if model_name in ["owkin", "resnet50", "resnet50_full", "remedis", "imagebind"]:

@@ -186,7 +186,7 @@ def perform_knn(train_data, train_labels, test_data, test_labels, save_dir):
 
         # If you want to log the results with Weights & Biases (wandb), you can initialize a wandb run:
         wandb.init(
-            entity="histo-collab",
+            entity="piotrmwojcik",
             project="knn",
             name=run_name,
         )
@@ -250,7 +250,7 @@ def train_and_evaluate_logistic_regression(
 ):
     # Initialize wandb
     wandb.init(
-        entity="histo-collab",
+        entity="piotrmwojcik",
         project="logistic_regression",
         name=f"{dataset}_{Path(save_dir).name}",
     )

@@ -167,7 +167,7 @@ def main(args):
     test_dataloader = DataLoader(test_dataset, batch_size=args.batch_size, shuffle=False, num_workers=args.num_workers)
 
     # If you want to log the results with Weights & Biases (wandb), you can initialize a wandb run:
-    wandb.init(entity="histo-collab", project=args.run_name, name=args.experiment_name, config=args)
+    wandb.init(entity="piotrmwojcik", project=args.run_name, name=args.experiment_name, config=args)
 
     if model_name in ["owkin", "resnet50", "resnet50_full", "remedis", "imagebind"]:
         sorted_paths = [None]
