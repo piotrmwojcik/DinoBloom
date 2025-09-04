@@ -7,7 +7,7 @@ import itertools
 import warnings
 from typing import Any, Optional
 
-import dinov2.distributed as distributed
+import dinobloom.distributed as distributed
 import numpy as np
 import torch
 from torch.utils.data.sampler import Sampler

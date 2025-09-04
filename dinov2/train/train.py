@@ -12,7 +12,7 @@ from functools import partial
 
 sys.path.append(".")
 
-import dinov2.distributed as distributed
+import dinobloom.distributed as distributed
 import torch
 import wandb
 from dinov2.data import (

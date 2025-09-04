@@ -7,7 +7,7 @@ import logging
 import math
 import os
 
-import dinov2.distributed as distributed
+import dinobloom.distributed as distributed
 from dinov2.configs import dinov2_default_config
 from dinov2.logging import setup_logging
 from dinov2.utils import utils

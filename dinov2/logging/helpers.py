@@ -9,7 +9,7 @@ import logging
 import time
 from collections import defaultdict, deque
 
-import dinov2.distributed as distributed
+import dinobloom.distributed as distributed
 import torch
 
 logger = logging.getLogger("dinov2")

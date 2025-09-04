@@ -7,7 +7,7 @@ import os
 from functools import partial
 from typing import Any
 
-import dinov2.distributed as distributed
+import dinobloom.distributed as distributed
 import torch
 from fvcore.common.checkpoint import Checkpointer
 from torch.distributed.fsdp import FullyShardedDataParallel as FSDP
