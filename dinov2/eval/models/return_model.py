@@ -50,7 +50,7 @@ def get_retCCL(model_path):
 
 # for 224
 def get_dino_finetuned_downloaded(model_path, modelname):
-    model = torch.hub.load("facebookresearch/dinov2", modelname)
+    model = torch.hub.load("/data/pwojcik/src/dinov2-official", modelname, source='local', trust_repo=True)
     # load finetuned weights
 
     # pos_embed has wrong shape
