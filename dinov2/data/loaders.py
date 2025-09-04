@@ -11,7 +11,7 @@ import torch
 from torch.utils.data import Sampler
 
 from .datasets import (
-    HemaStandardDataset
+    HemaStandardDataset, ImageNetDataset
 )
 from .samplers import EpochSampler, InfiniteSampler, ShardedInfiniteSampler
 
