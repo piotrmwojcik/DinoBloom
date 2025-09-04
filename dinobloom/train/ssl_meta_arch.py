@@ -8,14 +8,14 @@ import math
 from functools import partial
 
 import torch
-from dinov2.fsdp import ShardedGradScaler, get_fsdp_modules, get_fsdp_wrapper, reshard_fsdp_model
-from dinov2.layers import DINOHead
-from dinov2.loss import DINOLoss, KoLeoLoss, iBOTPatchLoss
-from dinov2.models import build_model_from_cfg
+from dinobloom.fsdp import ShardedGradScaler, get_fsdp_modules, get_fsdp_wrapper, reshard_fsdp_model
+from dinobloom.layers import DINOHead
+from dinobloom.loss import DINOLoss, KoLeoLoss, iBOTPatchLoss
+from dinobloom.models import build_model_from_cfg
 
-from dinov2.models.vision_transformer import BlockChunk
-from dinov2.utils.param_groups import fuse_params_groups, get_params_groups_with_decay
-from dinov2.utils.utils import has_batchnorms
+from dinobloom.models.vision_transformer import BlockChunk
+from dinobloom.utils.param_groups import fuse_params_groups, get_params_groups_with_decay
+from dinobloom.utils.utils import has_batchnorms
 from torch import nn
 
 try:

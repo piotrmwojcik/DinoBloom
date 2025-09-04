@@ -15,7 +15,7 @@ sys.path.append(".")
 import dinobloom.distributed as distributed
 import torch
 import wandb
-from dinov2.data import (
+from dinobloom.data import (
     DataAugmentationDINO,
     DataAugmentationHEMA,
     MaskingGenerator,
@@ -24,11 +24,11 @@ from dinov2.data import (
     make_data_loader,
     make_dataset,
 )
-from dinov2.fsdp import FSDPCheckpointer
-from dinov2.logging import MetricLogger
+from dinobloom.fsdp import FSDPCheckpointer
+from dinobloom.logging import MetricLogger
 from dinobloom.train.ssl_meta_arch import SSLMetaArch
-from dinov2.utils.config import setup
-from dinov2.utils.utils import CosineScheduler, smooth_rank_measure
+from dinobloom.utils.config import setup
+from dinobloom.utils.utils import CosineScheduler, smooth_rank_measure
 from fvcore.common.checkpoint import PeriodicCheckpointer
 
 torch.backends.cuda.matmul.allow_tf32 = True  # PyTorch 1.12 sets this to False by default

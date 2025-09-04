@@ -8,9 +8,9 @@ import math
 import os
 
 import dinobloom.distributed as distributed
-from dinov2.configs import dinov2_default_config
-from dinov2.logging import setup_logging
-from dinov2.utils import utils
+from dinobloom.configs import dinov2_default_config
+from dinobloom.logging import setup_logging
+from dinobloom.utils import utils
 from omegaconf import OmegaConf
 
 logger = logging.getLogger("dinov2")
