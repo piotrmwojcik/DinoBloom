@@ -40,6 +40,8 @@ def _parse_dataset_str(dataset_str: str):
 
     if name == "HemaStandardDataset":
         class_ = HemaStandardDataset
+    elif name == "ImageNetDataset":
+        class_ = ImageNetDataset
     else:
         raise ValueError(f'Unsupported dataset "{name}"')
 
