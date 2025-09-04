@@ -26,7 +26,7 @@ from dinov2.data import (
 )
 from dinov2.fsdp import FSDPCheckpointer
 from dinov2.logging import MetricLogger
-from dinov2.train.ssl_meta_arch import SSLMetaArch
+from dinobloom.train.ssl_meta_arch import SSLMetaArch
 from dinov2.utils.config import setup
 from dinov2.utils.utils import CosineScheduler, smooth_rank_measure
 from fvcore.common.checkpoint import PeriodicCheckpointer
