@@ -76,12 +76,12 @@ evaluation:
 
 student:
   arch: dinov2_vitb14
-  patch_size: 8
+  patch_size: 14
 crops:
   global_crops_scale:
   - 0.32 #0.32 default
   - 1.0
-  global_crops_size: 64
+  global_crops_size: 112
   local_crops_size: 16
   local_crops_number: 1 #!!! bit hacky, 1 indicates NO LOCAL CROPS !!!
 dino:
