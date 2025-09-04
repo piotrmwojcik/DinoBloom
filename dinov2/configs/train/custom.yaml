@@ -76,7 +76,7 @@ evaluation:
 
 student:
   arch: dinov2_vitb14
-  patch_size: 14
+  patch_size: 8
 crops:
   global_crops_scale:
   - 0.32 #0.32 default
