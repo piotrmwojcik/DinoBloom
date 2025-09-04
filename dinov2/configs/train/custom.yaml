@@ -46,7 +46,7 @@ ibot:
   #head_n_prototypes: 131072
 data_transform: "default"
 train:
-  batch_size_per_gpu: 120 #vitg 26+, vitl: 56, vits:152, vitb:120 for 8 node
+  batch_size_per_gpu: 60 #vitg 26+, vitl: 56, vits:152, vitb:120 for 8 node
   num_workers: 124
   OFFICIAL_EPOCH_LENGTH: 500  # 1250
   dataset_path: FreiburgDataset:root=/data/pwojcik/For_Piotr/gloms_rect_only_PAS/cells:shuffle=1
@@ -81,7 +81,8 @@ crops:
   global_crops_scale:
   - 0.32 #0.32 default
   - 1.0
-  local_crops_size: 98
+  global_crops_size: 64
+  local_crops_size: 32
   local_crops_number: 1 #!!! bit hacky, 1 indicates NO LOCAL CROPS !!!
 dino:
   head_bottleneck_dim: 256 #vits: 256, vitl: 384 
