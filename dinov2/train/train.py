@@ -379,11 +379,5 @@ if __name__ == "__main__":
     rank = int(os.environ.get("RANK", "0"))
     is_main = (rank == 0)
 
-    wandb.init(
-        entity=os.environ.get("WANDB_ENTITY", "histo-collab"),
-        project="dinov2",
-        name=f"{getpass.getuser()}_{name}",
-        config=vars(args) if hasattr(args, "__dict__") else args,
-        mode="online" if is_main else "disabled",
-    )
+    wandb.init(project="dinov2", name=name, mode="online", config=args)
     main(args)
