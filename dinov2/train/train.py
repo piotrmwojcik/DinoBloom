@@ -376,5 +376,14 @@ if __name__ == "__main__":
     args = get_args_parser(add_help=True).parse_args()
     name = args.name if args.name != "debug" else args.name
     args.output_dir = os.path.join(args.output_dir, name)
-    wandb.init(entity="histo-collab", project="dinov2", name=name, mode="online", config=args)
+    rank = int(os.environ.get("RANK", "0"))
+    is_main = (rank == 0)
+
+    wandb.init(
+        entity=os.environ.get("WANDB_ENTITY", "histo-collab"),
+        project="dinov2",
+        name=f"{getpass.getuser()}_{name}",
+        config=vars(args) if hasattr(args, "__dict__") else args,
+        mode="online" if is_main else "disabled",
+    )
     main(args)
