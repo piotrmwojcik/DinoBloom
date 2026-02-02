@@ -79,7 +79,7 @@ def interpolate_pos_encoding(x, w, h):
 
 def get_downloaded_dino_vit_interpolated(modelname="dinov2_vits14"):
 
-    torch.hub.load("/data/pwojcik/DinoBloom/dinov2", modelname, source="local")  #
+    torch.hub.load("/data/pwojcik/dinov2", modelname, source="local")  #
     input_tensor = model.pos_embed
     tensor_corr_shape = interpolate_pos_encoding(input_tensor, 16, 16)
     pos_embed = nn.Parameter(torch.zeros(1, 257))
