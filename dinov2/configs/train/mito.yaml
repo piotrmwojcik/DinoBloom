@@ -67,7 +67,7 @@ optim:
   layerwise_decay: 1.0
 
 evaluation:
-  eval_period_iterations: 1000
+  eval_period_iterations: 50
 
 # adapt to model architecture
 # ---------------------------
