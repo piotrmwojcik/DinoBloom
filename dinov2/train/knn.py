@@ -3,6 +3,8 @@
 # This source code is licensed under the Apache License, Version 2.0
 # found in the LICENSE file in the root directory of this source tree.
 
+sys.path.append(".")
+
 import argparse
 from functools import partial
 import json
@@ -14,7 +16,7 @@ from typing import List, Optional
 import torch
 from torch.nn.functional import one_hot, softmax
 
-import distributed as distributed
+import dinov2.distributed as distributed
 from dinov2.data import SamplerType, make_data_loader, make_dataset
 from dinov2.data.transforms import make_classification_eval_transform
 from dinov2.eval.metrics import AccuracyAveraging, build_topk_accuracy_metric
