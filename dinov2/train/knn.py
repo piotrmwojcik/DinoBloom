@@ -25,6 +25,7 @@ from dinov2.data.transforms import make_classification_eval_transform
 from dinov2.eval.metrics import AccuracyAveraging, build_topk_accuracy_metric
 from dinov2.eval.setup import get_args_parser as get_setup_args_parser
 from dinov2.eval.setup import setup_and_build_model
+from dinov2.train.ssl_meta_arch import setup_and_build_teacher_backbone
 from dinov2.eval.utils import ModelWithNormalize, evaluate, extract_features
 
 
