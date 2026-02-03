@@ -386,7 +386,7 @@ def eval_knn_with_model(
 def main(args):
     cfg = setup(args)
 
-    model, autocast_dtype = setup_and_build_teacher_backbone(args)
+    model, autocast_dtype = setup_and_build_teacher_backbone(cfg)
     eval_knn_with_model(
         model=model,
         output_dir=args.output_dir,
