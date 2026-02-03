@@ -88,9 +88,7 @@ def get_downloaded_dino_vit_interpolated(modelname="dinov2_vits14"):
     return model
 
 
-def setup_and_build_teacher_backbone(args):
-    # Load cfg the same way training does
-    cfg = setup(args)
+def setup_and_build_teacher_backbone(cfg):
 
     # Build backbone exactly like your training path
     backbone = get_downloaded_dino_vit_interpolated(cfg.student.arch)
