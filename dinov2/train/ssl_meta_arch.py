@@ -88,6 +88,29 @@ def get_downloaded_dino_vit_interpolated(modelname="dinov2_vits14"):
     return model
 
 
+def setup_and_build_teacher_backbone(args):
+    # Load cfg the same way training does
+    cfg = setup(args)
+
+    # Build backbone exactly like your training path
+    backbone = get_downloaded_dino_vit_interpolated(cfg.student.arch)
+
+    # Load the saved teacher checkpoint (expects {"teacher": state_dict})
+    ckpt = torch.load(args.pretrained_weights, map_location="cpu")
+    teacher_sd = ckpt["teacher"]
+
+    # Keep only backbone weights and strip "backbone." prefix
+    backbone_sd = {k[len("backbone."):]: v for k, v in teacher_sd.items() if k.startswith("backbone.")}
+
+    backbone.load_state_dict(backbone_sd, strict=True)
+    backbone.eval().to("cuda")
+
+    # Pick autocast dtype (match your eval script’s behavior; fp16 is typical)
+    autocast_dtype = torch.float16 if torch.cuda.is_available() else torch.float32
+
+    return backbone, autocast_dtype
+
+
 class SSLMetaArch(nn.Module):
     def __init__(self, cfg):
         super().__init__()
