@@ -5,6 +5,17 @@ import os
 import xml.etree.ElementTree as ET
 from pathlib import Path
 
+import logging
+from typing import Dict, Optional
+
+import torch
+from torch import nn
+from torchmetrics import MetricCollection
+
+from dinov2.data import DatasetWithEnumeratedTargets, SamplerType, make_data_loader
+import dinov2.distributed as distributed
+from dinov2.logging import MetricLogger
+
 import cv2
 import h5py
 import numpy as np
