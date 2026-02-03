@@ -186,7 +186,6 @@ def perform_knn(train_data, train_labels, test_data, test_labels, save_dir):
 
         # If you want to log the results with Weights & Biases (wandb), you can initialize a wandb run:
         wandb.init(
-            entity="histo-collab",
             project="knn",
             name=run_name,
         )
