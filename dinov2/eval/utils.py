@@ -14,6 +14,15 @@ from sklearn.model_selection import train_test_split
 from torch.utils.data import Dataset
 
 
+class ModelWithNormalize(torch.nn.Module):
+    def __init__(self, model):
+        super().__init__()
+        self.model = model
+
+    def forward(self, samples):
+        return nn.functional.normalize(self.model(samples), dim=1, p=2)
+
+
 def create_label_mapping(df):
     """
     Creates a dictionary mapping each unique class label in the dataframe to an integer.
