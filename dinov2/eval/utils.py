@@ -473,9 +473,13 @@ def all_gather_and_flatten(tensor_rank):
 
 
 def extract_features(model, dataset, batch_size, num_workers, gather_on_cpu=False):
-    dataset_with_enumerated_targets = DatasetWithEnumeratedTargets(dataset)
-    sample_count = getattr(dataset_with_enumerated_targets, "true_len", len(dataset_with_enumerated_targets))
-    print('!!! ', sample_count)
+    def unwrap_dataset(ds):
+        while hasattr(ds, "_dataset"):
+            ds = ds._dataset
+        return ds
+
+    base_ds = unwrap_dataset(dataset_with_enumerated_targets)
+    sample_count = getattr(base_ds, "true_len", len(base_ds))
     data_loader = make_data_loader(
         dataset=dataset_with_enumerated_targets,
         batch_size=batch_size,
