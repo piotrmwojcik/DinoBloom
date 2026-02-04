@@ -453,7 +453,7 @@ def evaluate(
             metric.update(**metric_inputs)
 
     metric_logger.synchronize_between_processes()
-    logger.info(f"Averaged stats: {metric_logger}")
+    print(f"Averaged stats: {metric_logger}")
 
     stats = {k: metric.compute() for k, metric in metrics.items()}
     metric_logger_stats = {k: meter.global_avg for k, meter in metric_logger.meters.items()}
