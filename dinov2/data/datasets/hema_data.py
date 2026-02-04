@@ -106,5 +106,5 @@ class HemaStandardDataset(VisionDataset):
         return torch.tensor(self.targets[adjusted_index], dtype=torch.long)
 
     def __len__(self) -> int:
-        return 120000000
-        #return len(self.patches)
+        #return 120000000
+        return len(self.patches)
