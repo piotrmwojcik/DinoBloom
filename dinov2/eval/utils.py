@@ -478,6 +478,7 @@ def extract_features(model, dataset, batch_size, num_workers, gather_on_cpu=Fals
             ds = ds._dataset
         return ds
 
+    dataset_with_enumerated_targets = DatasetWithEnumeratedTargets(dataset)
     base_ds = unwrap_dataset(dataset_with_enumerated_targets)
     sample_count = getattr(base_ds, "true_len", len(base_ds))
     data_loader = make_data_loader(
