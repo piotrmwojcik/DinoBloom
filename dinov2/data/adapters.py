@@ -20,7 +20,19 @@ class DatasetWithEnumeratedTargets(Dataset):
         return (index, target)
 
     def __getitem__(self, index: int) -> Tuple[Any, Tuple[Any, int]]:
-        image, target = self._dataset[index]
+        out = self._dataset[index]
+
+        # Underlying dataset might return:
+        #   (image, target) or (image, target, filepath) or more
+        if isinstance(out, (tuple, list)) and len(out) >= 2:
+            image, target = out[0], out[1]
+        else:
+            raise ValueError(
+                f"Underlying dataset must return at least (image, target). Got: {type(out)} {out}"
+            )
+
+        # DINOv2 convention: return (image, (index, target))
+        # If target is None, fall back to index (keeps old behavior)
         target = index if target is None else target
         return image, (index, target)
 
