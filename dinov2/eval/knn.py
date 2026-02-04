@@ -368,10 +368,10 @@ def eval_knn_with_model(
     if distributed.is_main_process():
         for knn_ in results_dict_knn.keys():
             top1 = results_dict_knn[knn_]["top-1"].item() * 100.0
-            top5 = results_dict_knn[knn_]["top-5"].item() * 100.0
+            top3 = results_dict_knn[knn_]["top-3"].item() * 100.0
             results_dict[f"{knn_} Top 1"] = top1
-            results_dict[f"{knn_} Top 5"] = top5
-            logger.info(f"{knn_} classifier result: Top1: {top1:.2f} Top5: {top5:.2f}")
+            results_dict[f"{knn_} Top 3"] = top3
+            logger.info(f"{knn_} classifier result: Top1: {top1:.2f} Top5: {top3:.2f}")
 
     metrics_file_path = os.path.join(output_dir, "results_eval_knn.json")
     with open(metrics_file_path, "a") as f:
