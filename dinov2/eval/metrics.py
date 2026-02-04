@@ -47,12 +47,12 @@ def build_metric(metric_type: MetricType, *, num_classes: int, ks: Optional[tupl
         return build_topk_accuracy_metric(
             average_type=metric_type.accuracy_averaging,
             num_classes=num_classes,
-            ks=(1, 5) if ks is None else ks,
+            ks=(1, 3) if ks is None else ks,
         )
     elif metric_type == MetricType.IMAGENET_REAL_ACCURACY:
         return build_topk_imagenet_real_accuracy_metric(
             num_classes=num_classes,
-            ks=(1, 5) if ks is None else ks,
+            ks=(1, 3) if ks is None else ks,
         )
     elif metric_type == MetricType.MEAN_PER_CLASS_MULTILABEL_F1:
         return MetricCollection({"top-1": MultilabelF1Score(num_labels=int(num_classes), average="macro")})
@@ -69,7 +69,7 @@ def build_topk_accuracy_metric(average_type: AccuracyAveraging, num_classes: int
     return MetricCollection(metrics)
 
 
-def build_topk_imagenet_real_accuracy_metric(num_classes: int, ks: tuple = (1, 5)):
+def build_topk_imagenet_real_accuracy_metric(num_classes: int, ks: tuple = (1, 3)):
     metrics: Dict[str, Metric] = {f"top-{k}": ImageNetReaLAccuracy(top_k=k, num_classes=int(num_classes)) for k in ks}
     return MetricCollection(metrics)
 
