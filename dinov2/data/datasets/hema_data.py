@@ -45,6 +45,13 @@ class HemaStandardDataset(VisionDataset):
 
         self.patches = [str(p) for p in sorted(files)]
 
+        class_names = sorted({Path(p).parent.name for p in self.patches})
+        self.class_to_idx = {name: i for i, name in enumerate(class_names)}
+        self.idx_to_class = {i: name for name, i in self.class_to_idx.items()}
+
+        # Precompute targets aligned with patches
+        self.targets = [self.class_to_idx[Path(p).parent.name] for p in self.patches]
+
         if shuffle:
             import random
             random.shuffle(self.patches)
@@ -95,8 +102,8 @@ class HemaStandardDataset(VisionDataset):
         return patch, filepath
 
     def get_target(self, index: int) -> torch.Tensor:
-        # labels are not used for training
-        return torch.zeros((1,))
+        adjusted_index = index % self.true_len
+        return torch.tensor(self.targets[adjusted_index], dtype=torch.long)
 
     def __len__(self) -> int:
         # Large number for infinite data sampling (keeps your original behavior)
