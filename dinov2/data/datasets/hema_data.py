@@ -49,8 +49,6 @@ class HemaStandardDataset(VisionDataset):
         self.class_to_idx = {name: i for i, name in enumerate(class_names)}
         self.idx_to_class = {i: name for name, i in self.class_to_idx.items()}
 
-        print('!!! ', class_names, self.idx_to_class)
-
         # Precompute targets aligned with patches
         self.targets = [self.class_to_idx[Path(p).parent.name] for p in self.patches]
 
@@ -108,5 +106,4 @@ class HemaStandardDataset(VisionDataset):
         return torch.tensor(self.targets[adjusted_index], dtype=torch.long)
 
     def __len__(self) -> int:
-        # Large number for infinite data sampling (keeps your original behavior)
-        return 120000000
+        return len(self.samples)
