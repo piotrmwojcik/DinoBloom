@@ -509,7 +509,7 @@ def extract_features_with_dataloader(model, data_loader, sample_count, gather_on
             labels_shape = list(labels_rank.shape)
             labels_shape[0] = sample_count
             all_labels = torch.full(labels_shape, fill_value=-1, device=gather_device)
-            logger.info(f"Storing features into tensor of shape {features.shape}")
+            print(f"Storing features into tensor of shape {features.shape}")
 
         # share indexes, features and labels between processes
         index_all = all_gather_and_flatten(index).to(gather_device)
@@ -521,8 +521,8 @@ def extract_features_with_dataloader(model, data_loader, sample_count, gather_on
             features.index_copy_(0, index_all, features_all_ranks)
             all_labels.index_copy_(0, index_all, labels_all_ranks)
 
-    logger.info(f"Features shape: {tuple(features.shape)}")
-    logger.info(f"Labels shape: {tuple(all_labels.shape)}")
+    print(f"Features shape: {tuple(features.shape)}")
+    print(f"Labels shape: {tuple(all_labels.shape)}")
 
     assert torch.all(all_labels > -1)
 
